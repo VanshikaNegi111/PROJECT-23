@@ -27,24 +27,26 @@ function setup()
 	//create the package
 	package=createSprite(width/2, 80, 10,10);
 	package.addImage(packageImg)
-	package.scale=0.2
-	
+	package.scale = 0.2;
+   
 	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
 	World.add(world, packageBody);
-	Matter.Body.translate(packageBody, {x:10, y:5});
+  
+  
 	
-    //create the helicopter
-    helicopter=createSprite(width/2, 200, 10,10);
+  //create the helicopter
+  helicopter=createSprite(width/2, 200, 10,10);
 	helicopter.addImage(heliImg);
 	helicopter.scale=0.6;
-    
+  Matter.Body.translate(packageBody, {x:-16,y:0});
 	helicopterBody = Bodies.circle(width/2 , 200 , 5 ,{restitution:0.4, isStatic:true});
 	World.add(world, helicopterBody);
 	
     //create the hideOut using class
-	log1 = new Log(260,500,15,140,-PI);
-	log2 = new Log(560,500,15,140,PI);
-	log3 = new Log(400,650,270,15,PI/1.45);
+	log1 = new Log(260,530,15,140,-PI);
+	log2 = new Log(560,530,15,140,PI);
+	log3 = new Log(410,610,280,15,PI/2);
+ 
     
 	//create ground using Ground class
 	ground = new Ground(800);
@@ -63,7 +65,7 @@ function draw() {
   Engine.update(engine);
   rectMode(CENTER);
   background(bgImg);
- 
+  
   package.x= packageBody.position.x ;
   package.y= packageBody.position.y ;
 
@@ -75,6 +77,7 @@ function draw() {
   log1.display();
   log2.display();
   log3.display();
+  
 
   //move the plane to left
   if (keyDown("LEFT_ARROW"))
