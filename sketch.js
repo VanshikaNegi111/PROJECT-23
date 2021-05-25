@@ -32,18 +32,20 @@ function setup()
 	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
 	World.add(world, packageBody);
   
-       //create the helicopter
-        helicopter=createSprite(width/2, 200, 10,10);
+  
+	
+  //create the helicopter
+  helicopter=createSprite(width/2, 200, 10,10);
 	helicopter.addImage(heliImg);
 	helicopter.scale=0.6;
   
 	helicopterBody = Bodies.circle(width/2 , 200 , 5 ,{restitution:0.4, isStatic:true});
 	World.add(world, helicopterBody);
 	
-       //create the hideOut using class
+    //create the hideOut using class
 	log1 = new Log(260,530,15,140,-PI);
 	log2 = new Log(560,530,15,140,PI);
-	log3 = new Log(410,650,280,15,PI/2);
+	log3 = new Log(410,610,280,15,PI/2);
  
     
 	//create ground using Ground class
