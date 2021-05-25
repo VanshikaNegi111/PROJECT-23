@@ -43,7 +43,7 @@ function setup()
        //create the hideOut using class
 	log1 = new Log(260,530,15,140,-PI);
 	log2 = new Log(560,530,15,140,PI);
-	log3 = new Log(410,610,280,15,PI/2);
+	log3 = new Log(410,650,280,15,PI/2);
  
     
 	//create ground using Ground class
