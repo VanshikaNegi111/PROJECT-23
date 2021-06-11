@@ -42,18 +42,34 @@ function setup()
 	helicopterBody = Bodies.circle(width/2 , 200 , 5 ,{restitution:0.4, isStatic:true});
 	World.add(world, helicopterBody);
 	
-    //create the hideOut using class
-	log1 = new Log(260,530,15,140,-PI);
-	log2 = new Log(560,530,15,140,PI);
-	log3 = new Log(410,610,280,15,PI/2);
+  //   //create the hideOut using class
+	// log1 = new Log(260,530,15,140,-PI);
+	// log2 = new Log(560,530,15,140,PI);
+	// log3 = new Log(410,610,270,15,PI/2);
  
-    
+  var log_options={
+    'restitution':0.5,
+    'friction':1.0,
+    'density':1.0,
+    isStatic:true
+   }
+   
+	log1 = Bodies.rectangle(260,535,15,140,log_options);
+  World.add(world, log1);
+
+  log2 = Bodies.rectangle(560,535,15,140,log_options);
+  World.add(world, log2);
+
+  log3 = Bodies.rectangle(410,597,250,15,log_options);
+  World.add(world, log3);
+
 	//create ground using Ground class
 	ground = new Ground(800);
 
     //boxPosition=width/2-100
  	//boxY=610;
-	 
+
+  
 
 
 	Engine.run(engine);
@@ -68,26 +84,36 @@ function draw() {
   
   package.x= packageBody.position.x ;
   package.y= packageBody.position.y ;
-
+  console.log(package.y);
   helicopter.x = helicopterBody.position.x;
   helicopter.y = helicopterBody.position.y;
-  
+ 
+  push();
+  strokeWeight(3);
+  stroke("yellow");
+  fill("red")
+  rectMode(CENTER);
+  rect(log1.position.x,log1.position.y,15,140);
+  rect(log2.position.x,log2.position.y,15,140);
+  rect(log3.position.x,log3.position.y,285,15);
+  pop();
+
   //display objects created using class
   ground.display();
-  log1.display();
-  log2.display();
-  log3.display();
+  // log1.display();
+  // log2.display();
+  // log3.display();
   
 
   //move the plane to left
-  if (keyDown("LEFT_ARROW"))
+  if (package.y < 250 && keyDown("LEFT_ARROW"))
   {
    helicopterBody.position.x = helicopterBody.position.x - 16;
    Matter.Body.translate(packageBody, {x:-16,y:0});
   }
 
   //move the plane to right
-  if (keyDown("RIGHT_ARROW"))
+  if (package.y < 250 && keyDown("RIGHT_ARROW"))
   {
    helicopterBody.position.x = helicopterBody.position.x + 16;
    Matter.Body.translate(packageBody, {x:16,y:0});
