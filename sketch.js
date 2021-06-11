@@ -41,11 +41,6 @@ function setup()
   
 	helicopterBody = Bodies.circle(width/2 , 200 , 5 ,{restitution:0.4, isStatic:true});
 	World.add(world, helicopterBody);
-	
-  //   //create the hideOut using class
-	// log1 = new Log(260,530,15,140,-PI);
-	// log2 = new Log(560,530,15,140,PI);
-	// log3 = new Log(410,610,270,15,PI/2);
  
   var log_options={
     'restitution':0.5,
@@ -66,12 +61,6 @@ function setup()
 	//create ground using Ground class
 	ground = new Ground(800);
 
-    //boxPosition=width/2-100
- 	//boxY=610;
-
-  
-
-
 	Engine.run(engine);
   
 }
@@ -84,7 +73,7 @@ function draw() {
   
   package.x= packageBody.position.x ;
   package.y= packageBody.position.y ;
-  console.log(package.y);
+  
   helicopter.x = helicopterBody.position.x;
   helicopter.y = helicopterBody.position.y;
  
@@ -100,9 +89,6 @@ function draw() {
 
   //display objects created using class
   ground.display();
-  // log1.display();
-  // log2.display();
-  // log3.display();
   
 
   //move the plane to left
